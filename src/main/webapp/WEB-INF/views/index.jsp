@@ -1,6 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,8 @@ div[id^=movie]{
 	align-items:center;
 }
 
+
+
 section[id^=board]{
 	margin-left: 100px;
 	margin-right: 100px;
@@ -47,8 +49,6 @@ section[id^=board]{
 
 </head>
 <body>
-<!-- 절대경로  -->
-<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 
 <div id="site_layout">
 
@@ -62,7 +62,7 @@ section[id^=board]{
 		<ul id="left_menu">
 		
 		<li class="left_menu">		
-		<a href=".do"><img src="${rootPath}/image/logo.webp" alt="OpenCritic"></a>
+		<a href=".do"><img src="/resources/image/logo.webp" alt="OpenCritic"></a>
 		</li>
 		<li class="left_menu">
 			<a href="#" class="top_text1">Genre</a>
@@ -91,10 +91,10 @@ section[id^=board]{
 			</div>
 		
 			<div id="login" class="right_menu">
-				<a href="${rootPath}/member/login.do" class="top_text2">Login</a>
+				<a href="member/login.do" class="top_text2">Login</a>
 			</div>
 			<div id="sign_up" class="right_menu">
-				<a href="${rootPath}/member/sign_up.do" class="top_text2">Sign Up</a>
+				<a href="member/sign_up.do" class="top_text2">Sign Up</a>
 			</div>
 		</nav>
 
@@ -105,25 +105,25 @@ section[id^=board]{
 	<!-- 영화 포스터-->		
 	<div id="posters">
 
-		<div id="movie1">asd
+		<div id="movie1">
 			<a href="#">
-				<img src="<c:url value="/image/movie1.webp" />" alt="movie1">
+				<img src="/resources/image/movie1.webp" alt="movie1">
 			</a>		
 		</div>
 		<div id="movie2">
 			<a href="#">
-				<img src="<c:url value="/image/movie2.webp" />" alt="movie2">
+				<img src="resources/image/movie2.webp" alt="movie2">
 			</a>		
 		</div>
 		<div id="movie3">
 			<a href="#">
-				<img src="${rootPath}/image/inner_poster.jpg" alt="movie3">
+				<img src="resources/image/inner_poster.jpg" alt="movie3">
 			</a>		
 
 		</div>
 		<div id="movie4">
 			<a href="#">
-				<img src="${rootPath}/image/movie4.webp" alt="movie4">
+				<img src="resources/image/movie4.webp" alt="movie4">
 			</a>	
 		</div>
 
@@ -136,31 +136,25 @@ section[id^=board]{
 
 		<section id="board_now">
 		<h2 class="line">AVAILABLE NOW</h2>
-
-			<article class="line">
-			<h3>movie 1</h3>			
-	
-			</article>
+		<table>
+			<thead>
+				<tr>
+					<th>제목</th>
+					<th>작성일</th>
+				</tr>
+			</thead>
 			
-			<article class="line">
-			<h3>movie 2</h3>			
+			<tbody>
 	
-			</article>		
-
-			<article class="line">
-			<h3>movie 3</h3>		
-	
-			</article>		
-	
-			<article class="line">
-			<h3>movie 4</h3>			
-	
-			</article>		
-
-			<article class="line">
-			<h3>movie 5</h3>			
-	
-			</article>		
+				<c:forEach items="${list}" var="list">
+					<tr>
+						<td><a href=#>${list.title}</a></td>
+						<td>${list.regDate}</td>
+					</tr>
+				</c:forEach>
+  		 	</tbody>
+  		 </table>
+			
 			
 		</section>
 		

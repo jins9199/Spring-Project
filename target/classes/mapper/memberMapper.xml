@@ -7,7 +7,7 @@
 		
 	
 	
-	<insert id="insertMember" parameterType="member">
+	<insert id="insertMember" parameterType="memberVO">
 	
 		INSERT INTO TBL_MEMBER(NICKNAME, MEMBERID, MEMBERPW, EMAIL, PHONENUM)
 		VALUES (#{nickname}, #{memberID}, #{memberPW}, #{email}, #{phoneNum})
@@ -25,12 +25,12 @@
 	</delete>
 
 
-	<select id="selectAllMember" resultType="member">
+	<select id="selectAllMember" resultType="memberVO">
 		SELECT * FROM TBL_MEMBER
 		ORDER BY MEMBERID
 	</select>
 	
-	<select id="selectOneMember" resultType="member">
+	<select id="selectOneMember" resultType="memberVO">
 		SELECT * FROM TBL_MEMBER
 		WHERE MEMBERID=#{memberID}
 		ORDER BY MEMBERID

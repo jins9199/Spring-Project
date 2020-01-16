@@ -3,9 +3,9 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="member" type="org.js.movie.member.domain.MemberVO"/>
-		<typeAlias alias="movieinfo" type="org.js.movie.movieinfo.domain.MovieInfoVO"/>
-		<typeAlias alias="rating" type="org.js.movie.rating.domain.RatingVO"/>
+		<typeAlias alias="memberVO" type="org.js.movie.member.domain.MemberVO"/>
+		<typeAlias alias="movieinfoVO" type="org.js.movie.movieinfo.domain.MovieInfoVO"/>
+		<typeAlias alias="ratingVO" type="org.js.movie.rating.domain.RatingVO"/>
 	</typeAliases>
 	
 </configuration>
