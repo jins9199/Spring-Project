@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sign Up</title>
+<title>Sign Up -MovieCritic</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <style>
 
@@ -33,7 +34,7 @@ p {
 
 div[id*=_box]{
 	margin-left: 25px;
-	margin-top: 5px;
+	margin-top: 8px;
 	
 }
 
@@ -69,6 +70,8 @@ div[id*=_box]{
 </head>
 
 <body>
+<!-- 절대경로 -->
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 
 <div id="site_layout">
 
@@ -82,7 +85,7 @@ div[id*=_box]{
 		<ul id="left_menu">
 		
 		<li class="left_menu">		
-		<a href="#"><img src="/resources/image/logo.webp" alt="OpenCritic"></a>
+		<a href="/"><img src="/resources/image/logo.webp" alt="OpenCritic"></a>
 		</li>
 		<li class="left_menu">
 			<a href="#" class="top_text1">Genre</a>
@@ -130,33 +133,34 @@ div[id*=_box]{
 
 	<div id="or"><span>or</span></div>
 
-
-	<div id="nickname_box">
-		<input type="text" placeholder=" Nickname" class="login">
-	</div>
-
-
-	<div id="id_box">
-		<input type="text" placeholder=" ID" class="login">
-	</div>
+	<form action="${rootPath}/member/sign_up.do" method="post">
+		<div id="nickname_box">
+			<input type="text" placeholder=" Nickname" class="login" name="nickname">
+		</div>
 	
-	<div id="pw_box">
-		<input type="password" placeholder=" Password" class="login">
-	</div>
-
-	<div id="email_box">
-		<input type="text" placeholder=" Email" class="login">
-	</div>
 	
-	<div id="phone_number_box">
-		<input type="text" placeholder=" Phone Number" class="login">
-	</div>
-
-
-
-	<article>
-		<input type="submit" id="create_account_btn" value="Create Account"/>
-	</article>
+		<div id="id_box">
+			<input type="text" placeholder=" ID" class="login" name="memberID">
+		</div>
+		
+		<div id="pw_box">
+			<input type="password" placeholder=" Password" class="login" name="memberPW">
+		</div>
+	
+		<div id="email_box">
+			<input type="text" placeholder=" Email" class="login" name="email">
+		</div>
+		
+		<div id="phone_number_box">
+			<input type="text" placeholder=" Phone Number" class="login" name="phoneNum">
+		</div>
+	
+	
+	
+		<article>
+			<input type="submit" id="create_account_btn" value="Create Account"/>
+		</article>
+	</form>
 
 	<div id="foot"><span>By clicking Register, you indicate that you have read and understand our Privacy Policy and Terms of Use and represent that you are at least 13 years of age.</span></div>
 

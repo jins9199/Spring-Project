@@ -2,45 +2,45 @@ package org.js.movie.member.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.js.movie.member.domain.MemberVO;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("MemberDAO")
+@Repository("memberDAO")
 public class MemberDAOImpl implements MemberDAO {
 
 	@Autowired
-	private SqlSession sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
 	@Override
 	public List<MemberVO> selectAllMember() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("MemberDAO.selectAllMember");
+		return sqlSession.selectList("MemberMapper.selectAllMember");
 	}
 
 	@Override
 	public void insertMember(MemberVO vo) {
 		// TODO Auto-generated method stub
-		sqlSession.insert("MemberDAO.insertMember");
+		sqlSession.insert("MemberMapper.insertMember", vo);
 	}
 
 	@Override
 	public MemberVO selectOneMember(String memberID) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("MemberDAO.selectOneMember");
+		return sqlSession.selectOne("MemberMapper.selectOneMember");
 	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
 		// TODO Auto-generated method stub
-		sqlSession.update("MemberDAO.updateMember");
+		sqlSession.update("MemberMapper.updateMember", vo);
 	}
 
 	@Override
 	public void deleteMember(String memberID) {
 		// TODO Auto-generated method stub
-		sqlSession.delete("MemberDAO.deleteMember");
+		sqlSession.delete("MemberMapper.deleteMember");
 	}
 
 	@Override

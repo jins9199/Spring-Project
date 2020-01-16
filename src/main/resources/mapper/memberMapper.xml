@@ -2,37 +2,38 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="MemberDAO">
+<mapper namespace="MemberMapper">
 	
 		
 	
 	
-	<insert id="insertMember">
-		INSERT INTO MEMBER
-		VALUES(#{id}, #{member_id}, #{member_pw}, #{email}, #{phone_num})
+	<insert id="insertMember" parameterType="member">
+	
+		INSERT INTO TBL_MEMBER(NICKNAME, MEMBERID, MEMBERPW, EMAIL, PHONENUM)
+		VALUES (#{nickname}, #{memberID}, #{memberPW}, #{email}, #{phoneNum})
 	
 	</insert>
 
 	<update id="updateMember">
-		UPDATE MEMBER SET MEMBER_PW=#{member_pw}, EMAIL=#{email}, PHONE_NUM=#{phone_num}
+		UPDATE TBL_MEMBER SET MEMBERPW=#{memberPW}, EMAIL=#{email}, PHONENUM=#{phoneNum}
 	
 	</update>
 	
 	<delete id="deleteMember" parameterType="String">
-		DELETE FROM MEMBER
-		WHERE MEMBER_ID = #{member_id}
+		DELETE FROM TBL_MEMBER
+		WHERE MEMBERID = #{memberID}
 	</delete>
 
 
 	<select id="selectAllMember" resultType="member">
-		SELECT * FROM MEMBER
-		ORDER BY MEMBER_ID
+		SELECT * FROM TBL_MEMBER
+		ORDER BY MEMBERID
 	</select>
 	
 	<select id="selectOneMember" resultType="member">
-		SELECT * FROM MEMBER
-		WHERE MEMBER_ID=#{member_id}
-		ORDER BY MEMBER_ID
+		SELECT * FROM TBL_MEMBER
+		WHERE MEMBERID=#{memberID}
+		ORDER BY MEMBERID
 	</select>
 
 </mapper>

@@ -55,7 +55,7 @@ p {
 	color:white;
 	width:270px;
 	height:30px;
-	margin: 13px auto;
+	margin: 13px 15px;
 	padding-top: 3px;
 }
 
@@ -122,18 +122,20 @@ p {
 	<!-- 상단 메뉴 끝-->
 
 <section id="login_box">
-<h3> LOG IN TO OPENCRITIC </h3>
-<p>Continue with Facebook</p>
-<div id="or"><span>or</span></div>
-<div id="id_box">
-<input type="text" placeholder=" ID" class="login">
-</div>
-<div id="pw_box">
-<input type="password" placeholder=" Password" class="login">
-</div>
-<div id="forgot"><a>Forgot Password?</a></div>
-<article id="login_btn"> Log In </article>
-<div id="foot"><span>Not a member?</span><a href="#" style=text-decoration:none;>Create an account</a></div>
+	<h3> LOG IN TO OPENCRITIC </h3>
+	<p>Continue with Facebook</p>
+	<div id="or"><span>or</span></div>
+	<div id="id_box">
+		<input type="text" placeholder=" ID" class="login">
+	</div>
+	<div id="pw_box">
+		<input type="password" placeholder=" Password" class="login">
+	</div>
+	<div id="forgot"><a>Forgot Password?</a></div>
+	<article>
+	 <input type="submit" id="login_btn" value="Log In"/> 
+	 </article>
+	<div id="foot"><span>Not a member?</span><a href="#" style=text-decoration:none;>Create an account</a></div>
 </section>
 
 </div>
