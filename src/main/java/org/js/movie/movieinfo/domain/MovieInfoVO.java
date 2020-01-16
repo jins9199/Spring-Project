@@ -25,8 +25,7 @@ public class MovieInfoVO {
 //		VALUES ('테스트제목4', 'wehwagwqfwqrwqrwtwtwtwtqtwq');
 //	INSERT INTO tbl_movieInfo (title, summary)
 //		VALUES ('테스트제목5', 'grewhewhw22rwqtwtwtqwtwq');
-		
-	COMMIT;
+	
 	private int id;
 	private String title;
 	private Date regDate;
