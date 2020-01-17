@@ -43,11 +43,17 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.delete("MemberMapper.deleteMember");
 	}
 
+//	@Override
+//	public boolean isMember(String memberID, String memberPW) {
+//		// TODO Auto-generated method stub
+//		
+//		return false;
+//	}
+	
 	@Override
-	public boolean isMember(String memberID, String memberPW) {
-		// TODO Auto-generated method stub
-		
-		return false;
+	public MemberVO login(MemberVO vo) {
+		return sqlSession.selectOne("MemberMapper.login", vo);
 	}
+
 
 }

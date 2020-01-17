@@ -278,7 +278,7 @@
 		<div id="main_info_area">
 		
 			<div class="main_info_text">
-			<h1>Movie Name <span style="font-size:14px;">Year</span></h1>
+			<h1>${view.title} <span style="font-size:14px;">Year</span></h1>
 			</div>
 
 			<div class="main_info_text">
@@ -317,7 +317,7 @@
 					<li>Starring
 						<p>abcd..dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
 					</li>
-					<li>Summary</li>
+					<li>${view.summary}</li>
 					<li>Director</li>
 					<li>Genre</li>
 					<li>Runtime</li>
@@ -340,7 +340,7 @@
 			<h3>Movie Score</h3>
 	
 			<!--점수표시 이미지-->
-			<div>
+			<div>9999
 			
 			</div>
 			<!--점수표시 이미지 끝-->
