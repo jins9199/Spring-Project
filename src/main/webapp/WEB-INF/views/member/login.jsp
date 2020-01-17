@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +70,9 @@ p {
 
 <body>
 
+<!-- 절대경로 -->
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
+
 <div id="site_layout">
 
 	<!--movieCri-->
@@ -115,6 +119,15 @@ p {
 			<div id="sign_up" class="right_menu">
 				<a href="sign_up.do" class="top_text2">Sign Up</a>
 			</div>
+			<div class="right_menu">
+				<a href="#">
+					<img src="/resources/image/toMyPage.png"
+					width="30px" height="30px">
+				</a>
+			</div>
+			<div id="logout" class="right_menu">
+				<a href="#" class="top_text2">Log Out</a>
+			</div>
 		</nav>
 
 	</div>
@@ -125,17 +138,24 @@ p {
 	<h3> LOG IN TO OPENCRITIC </h3>
 	<p>Continue with Facebook</p>
 	<div id="or"><span>or</span></div>
-	<div id="id_box">
-		<input type="text" placeholder=" ID" class="login">
-	</div>
-	<div id="pw_box">
-		<input type="password" placeholder=" Password" class="login">
-	</div>
-	<div id="forgot"><a>Forgot Password?</a></div>
-	<article>
-	 <input type="submit" id="login_btn" value="Log In"/> 
-	 </article>
-	<div id="foot"><span>Not a member?</span><a href="#" style=text-decoration:none;>Create an account</a></div>
+	
+	<form action="${rootPath}/member/login.do" method="post">
+		
+		<div id="id_box">
+			<input type="text" placeholder=" ID" class="login" name="memberID">
+		</div>
+		<div id="pw_box">
+			<input type="password" placeholder=" Password" class="login" name="memberPW">
+		</div>
+
+		<div id="forgot"><a>Forgot Password?</a></div>
+
+		<article>
+			 <input type="submit" id="login_btn" value="Log In"/> 
+		</article>
+		<div id="foot"><span>Not a member?</span><a href="#" style=text-decoration:none;>Create an account</a></div>
+	
+	</form>
 </section>
 
 </div>

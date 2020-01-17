@@ -4,7 +4,11 @@
 
 <mapper namespace="MemberMapper">
 	
-		
+	<select id="login" resultType="memberVO">
+		SELECT MEMBERID FROM TBL_MEMBER
+		WHERE MEMBERID = #{memberID} 
+		AND MEMBERPW = #{memberPW}
+	</select>
 	
 	
 	<insert id="insertMember" parameterType="memberVO">

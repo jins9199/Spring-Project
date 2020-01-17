@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 #site_layout{
 	margin: -8px;
 	padding : 0;
@@ -41,6 +42,7 @@
 .right_menu{
 	margin-left:auto;
 	padding-left:15px;
+
 	
 }
 .top_text1{
@@ -53,6 +55,7 @@
 
 #sign_up{
 	background:#f30;
+	margin-bottom:3px;
 	
 }
 

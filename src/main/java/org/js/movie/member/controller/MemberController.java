@@ -1,5 +1,8 @@
 package org.js.movie.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.js.movie.member.domain.MemberVO;
 import org.js.movie.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +39,7 @@ public class MemberController {
 		
 		memberService.insertMember(vo);
 		
-		return "index";
+		return "redirect:../index.do"; //      ../ = 현재위치의 상위경로
 	}
 	
 	//login Get
@@ -47,11 +50,32 @@ public class MemberController {
 	
 	//login Post
 	@RequestMapping(value="/login.do" , method=RequestMethod.POST)
-	public String postLogin() {
+	public String postLogin(MemberVO vo, HttpServletRequest req) {
+			
+		log.info("############ 로그인");
+		log.info("############ vo: " + vo);
+		log.info("############ req: " + req);
 		
+		HttpSession session = req.getSession();
 		
+		log.info("########### session: " + session);
+		
+		MemberVO login = memberService.login(vo);
+		
+		if(login == null) {
+			session.setAttribute("member", null);
+		} else
+			session.setAttribute("member", login);
 		return "index";
 	}
+	
+	//myPage Get
+	@RequestMapping(value="my_page.do" , method=RequestMethod.GET)
+	public String getMyPage() {
+		return "member/my_page";
+	}
+	
+	
 	
 }
 

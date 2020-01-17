@@ -44,10 +44,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public boolean isMember(String memberID, String memberPW) {
-		// TODO Auto-generated method stub
+	public MemberVO login(MemberVO vo) {
 		
-		return false;
+		return sqlSession.selectOne("MemberMapper.login");
 	}
 
 }

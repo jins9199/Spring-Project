@@ -19,7 +19,7 @@ public class HomeController {
 	@Autowired
 	MovieInfoService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "index.do"} , method = RequestMethod.GET)
 	public String getIndex(Model model) {
 		
 		List<MovieInfoVO> list = null;

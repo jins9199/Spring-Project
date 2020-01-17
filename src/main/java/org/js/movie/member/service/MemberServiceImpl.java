@@ -47,9 +47,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean isMember(String memberID, String memberPW) {
-		// TODO Auto-generated method stub
-		return false;
+	public MemberVO login(MemberVO vo) {
+		
+		return memberDAO.login(vo);
 	}
 
 }
