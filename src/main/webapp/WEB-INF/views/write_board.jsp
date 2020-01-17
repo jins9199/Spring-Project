@@ -230,16 +230,17 @@ td:nth-child(2n+1){
 	
 	<h2 style="text-align:center; margin-top:30px;">게시글 작성</h2>
 
-		<div id="main_right_area">		
+		<div id="main_right_area" style="display:flex; justify-content:center;
+	align-items:center;">		
 
-			<form action="#" method="get">
+			<form method="post">
 
 			
 				<table>
 	
 					<tr>
 						<td> Title  </td>
-						<td><input type="text"> </td>
+						<td><input type="text" name="title"> </td>
 					</tr>
 					<tr>
 						<td> Starring  </td>
@@ -251,7 +252,7 @@ td:nth-child(2n+1){
 					</tr>
 					<tr>
 						<td> Summary  </td>
-						<td><textarea cols="70" rows="10" maxlength="500"></textarea> </td>
+						<td><textarea cols="70" rows="10" maxlength="500" name="summary"></textarea> </td>
 					</tr>
 					<tr>
 						<td> 첨부  </td>
@@ -260,7 +261,7 @@ td:nth-child(2n+1){
 					
 				</table>
 
-				<div id="submit_btn_area"><input type="submit" id="submit_inner"></div>
+				<div id="submit_btn_area"><button type="submit">작성</button></div>
 
 			
 	

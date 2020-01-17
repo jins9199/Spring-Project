@@ -19,7 +19,8 @@ public interface MemberDAO {
 	//회원정보 삭제
 	public void deleteMember(String memberID);
 	//로그인
-	public boolean isMember(String memberID, String memberPW);
+//	public boolean isMember(String memberID, String memberPW);
+	public MemberVO login(MemberVO vo);
 	
 
 }

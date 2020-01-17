@@ -10,4 +10,6 @@ public interface MovieInfoService {
 	
 	public MovieInfoVO view(int id);
 	
+	public void write(MovieInfoVO vo);
+	
 }
