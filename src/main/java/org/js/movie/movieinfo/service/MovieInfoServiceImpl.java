@@ -26,10 +26,5 @@ public class MovieInfoServiceImpl implements MovieInfoService {
 		
 		return dao.view(id);
 	}
-	
-	@Override
-	public void write(MovieInfoVO vo) {
-		dao.write(vo);
-	}
 
 }

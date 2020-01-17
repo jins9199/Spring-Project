@@ -148,8 +148,8 @@ section[id^=board]{
 	
 				<c:forEach items="${list}" var="list">
 					<tr>
-						<td><a href="/movie_info?id=${list.id}">${list.title}</a></td>
-						<td><a href="/movie_info?id=${list.id}">${list.regDate}</a></td>
+						<td><a href=#>${list.title}</a></td>
+						<td>${list.regDate}</td>
 					</tr>
 				</c:forEach>
   		 	</tbody>

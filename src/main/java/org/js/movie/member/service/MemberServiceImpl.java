@@ -46,14 +46,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.deleteMember(memberID);
 	}
 
-//	@Override
-//	public boolean isMember(String memberID, String memberPW) {
-//		// TODO Auto-generated method stub
-//		return false;
-	
 	@Override
-	public MemberVO login(MemberVO vo) {
-		return memberDAO.login(vo);
+	public boolean isMember(String memberID, String memberPW) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

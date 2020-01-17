@@ -14,24 +14,17 @@ public class MovieInfoDAOImpl implements MovieInfoDAO {
 	@Inject
 	private SqlSession sql;
 	
-	//movie list
+	
 	@Override
 	public List<MovieInfoVO> list() {
 
 		return sql.selectList("MovieInfoMapper.list");
 	}
 	
-	//movie info
 	@Override
 	public MovieInfoVO view(int id) {
 		
 		return sql.selectOne("MovieInfoMapper.view", id);
 	}
 
-	//movie write
-	@Override
-	public void write(MovieInfoVO vo) {
-		
-		sql.insert("MovieInfoMapper.write", vo);
-	}
 }

@@ -133,7 +133,7 @@ div[id*=_box]{
 
 	<div id="or"><span>or</span></div>
 
-	<form method="post">
+	<form action="${rootPath}/member/sign_up.do" method="post">
 		<div id="nickname_box">
 			<input type="text" placeholder=" Nickname" class="login" name="nickname">
 		</div>

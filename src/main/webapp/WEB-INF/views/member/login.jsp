@@ -122,22 +122,20 @@ p {
 	<!-- 상단 메뉴 끝-->
 
 <section id="login_box">
-	<form method="post">
-		<h3> LOG IN TO OPENCRITIC </h3>
-		<p>Continue with Facebook</p>
-		<div id="or"><span>or</span></div>
-		<div id="id_box">
-			<input type="text" placeholder=" ID" class="login" name="memberID">
-		</div>
-		<div id="pw_box">
-			<input type="password" placeholder=" Password" class="login" name="memberPW">
-		</div>
-		<div id="forgot"><a>Forgot Password?</a></div>
-		<article>
-			<input type="submit" id="login_btn" value="Log In"/> 
-		</article>
-		<div id="foot"><span>Not a member?</span><a href="#" style=text-decoration:none;>Create an account</a></div>
-	</form>
+	<h3> LOG IN TO OPENCRITIC </h3>
+	<p>Continue with Facebook</p>
+	<div id="or"><span>or</span></div>
+	<div id="id_box">
+		<input type="text" placeholder=" ID" class="login">
+	</div>
+	<div id="pw_box">
+		<input type="password" placeholder=" Password" class="login">
+	</div>
+	<div id="forgot"><a>Forgot Password?</a></div>
+	<article>
+	 <input type="submit" id="login_btn" value="Log In"/> 
+	 </article>
+	<div id="foot"><span>Not a member?</span><a href="#" style=text-decoration:none;>Create an account</a></div>
 </section>
 
 </div>
