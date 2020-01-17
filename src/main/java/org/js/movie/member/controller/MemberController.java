@@ -1,5 +1,8 @@
 package org.js.movie.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.js.movie.member.domain.MemberVO;
 import org.js.movie.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,22 +38,43 @@ public class MemberController {
 		log.info("############vo: " + vo);
 		
 		memberService.insertMember(vo);
-		
-		return "index";
+
+		return "redirect:/";
 	}
 	
-	//login Get
-	@RequestMapping(value="/login.do", method=RequestMethod.GET)
-	public String getLogin() {
+//	//login Get
+//	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+//	public String getLogin() {
+//		return "member/login";
+//	}
+//	
+//	//login Post
+//	@RequestMapping(value="/login.do" , method=RequestMethod.POST)
+//	public String postLogin() {
+//		
+//		
+//		return "redirect:/";
+//	}
+	
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String getlogin() {
 		return "member/login";
 	}
 	
-	//login Post
-	@RequestMapping(value="/login.do" , method=RequestMethod.POST)
-	public String postLogin() {
+	@RequestMapping(value="/login", method = RequestMethod.POST)
+	public String login(MemberVO vo, HttpServletRequest req) {
+		log.info("#####################post login");
 		
+		HttpSession session = req.getSession();
 		
-		return "index";
+		MemberVO login = memberService.login(vo);
+		
+		if(login == null) {
+			session.setAttribute("member", null);
+		} else
+			session.setAttribute("member", login);
+		return "redirect:/";
+		
 	}
 	
 }
