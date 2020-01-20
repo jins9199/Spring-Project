@@ -1,39 +1,25 @@
 package org.js.movie.movieinfo.domain;
 
 
-import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 public class MovieInfoVO {
 
-	private int id;
+	private int id;  
+	private int movieID;
 	private String title;
-	private Date regDate;
-	private String summary;
-	
-	public String getSummary() {
-		return summary;
-	}
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public Date getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-	
-	
+	private String starring;
+	private String summary; 
+	private String genre;
+	private String writer;
+	private String regDate;
+	private int viewCnt;
+	private String stillCut;
+	private String thumbNail; 
+	private String poster;
 }

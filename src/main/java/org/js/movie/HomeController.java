@@ -22,8 +22,12 @@ public class HomeController {
 	@RequestMapping(value = {"/", "index.do"} , method = RequestMethod.GET)
 	public String getIndex(Model model) {
 		
+		log.info("HomeController 진입");
+		
 		List<MovieInfoVO> list = null;
 		list = service.list();
+		
+		log.info("list : " +list);
 		
 		model.addAttribute("list", list);
 

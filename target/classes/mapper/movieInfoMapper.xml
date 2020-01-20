@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MovieInfoMapper">
+
+<!-- title, starring, genre, summary, 첨부. -->
+	<insert id="insert" parameterType="movieInfoVO">
+		INSERT INTO TBL_MOVIEINFO (TITLE, STARRING, GENRE, SUMMARY, POSTER, THUMBNAIL, STILLCUT, WRITER)
+		VALUES (#{title}, #{starring}, #{genre}, #{summary}, #{poster}, #{thumbNail}, #{stillCut}, #{writer}	)
+	</insert>
+
+	<update id="update" parameterType="movieInfoVO">
+		UPDATE TBL_MOVIEINFO SET TITLE=#{title}, STARRING=#{starring}, GENRE=#{genre}, SUMARRY=#{summary},
+								POSTER=#{poster}, THUMBNAIL=#{thumbNail}, STILLCUT=#{stillCut}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM TBL_MOVIEINFO
+		WHERE TITLE = #{title}
+	</delete>
+
+
 	<!-- index movie 목록 -->
-	<select id="list" resultType="movieinfoVO">
+	<select id="list" resultType="movieInfoVO">
  		select
  			id, title, regDate
  		from tbl_movieinfo
 	</select>
 		
-	<select id="view" parameterType="int" resultType="movieinfoVO">
+	<select id="view" parameterType="int" resultType="movieInfoVO">
 		select
 			id, title, summary, regDate
 		from
@@ -17,4 +35,5 @@
 			id = #{id}
 	
 	</select>
+	
 </mapper>

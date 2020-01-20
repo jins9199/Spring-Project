@@ -49,7 +49,8 @@ section[id^=board]{
 
 </head>
 <body>
-
+<!-- 절대 경로 -->
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 <div id="site_layout">
 
 	<!--movieCri-->
@@ -105,17 +106,17 @@ section[id^=board]{
 		
 		
 				<!-- 로그인 안됐을 경우 , 로그인, 회원가입 버튼 보여줌-->
-		<c:if test="${sessionScope.sessionID==null}">		
+		<c:if test="${member==null}">		
 			<div id="login" class="right_menu">
-				<a href="member/login.do" class="top_text2">Login</a>
+				<a href="${rootPath}/member/login.do" class="top_text2">Login</a>
 			</div>
 			<div id="sign_up" class="right_menu">
-				<a href="member/sign_up.do" class="top_text2">Sign Up</a>
+				<a href="${rootPath}/member/sign_up.do" class="top_text2">Sign Up</a>
 			</div>
 		</c:if>
 		
 		<!-- 로그인 됐을 경우 , 로그아웃, 마이페이지 버튼 보여줌 -->
-		<c:if test="${sessionScope.sessionID!=null}">
+		<c:if test="${member!=null}">
 			<div class="right_menu">
 					<a href="${rootPath}/member/my_page.do">
 						<img src="/resources/image/toMyPage.png"
@@ -123,12 +124,12 @@ section[id^=board]{
 					</a>
 			</div>
 			<div id="logout" class="right_menu">
-					<a href="#" class="top_text2">Log Out</a>
+					<a href="${rootPath}/member/logout.do" class="top_text2">Log Out</a>
 			</div>
 		<!-- 관리자 로그인 -->
-			<c:if test="${sessionScope.sessionID=='admin'}">
-			<div id="admin_write" class="right_menu">
-					<a href="#" class="top_text2">Write</a>
+			<c:if test="${member.memberID=='admin'}">
+				<div id="admin_write" class="right_menu">
+					<a href="${rootPath}/write_board.do" class="top_text2">Write</a>
 				</div>
 			</c:if>
 		</c:if>	

@@ -4,8 +4,8 @@
 
 <mapper namespace="MemberMapper">
 	
-	<select id="login" resultType="memberVO">
-		SELECT MEMBERID FROM TBL_MEMBER
+	<select id="login" resultType="memberVO" parameterType="String">
+		SELECT NICKNAME, MEMBERID, EMAIL, PHONENUM  FROM TBL_MEMBER
 		WHERE MEMBERID = #{memberID} 
 		AND MEMBERPW = #{memberPW}
 	</select>

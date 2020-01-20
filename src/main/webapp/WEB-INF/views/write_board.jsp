@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,6 +65,9 @@ td:nth-child(2n+1){
 </head>
 <body>
 
+<!-- 절대 경로 -->
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
+
 <div id="site_layout">
 
 	<!--movieCri-->
@@ -104,12 +108,24 @@ td:nth-child(2n+1){
 				</form>			
 			</div>
 		
-			<div id="login" class="right_menu">
-				<a href="#" class="top_text2">Login</a>
+			<!-- 로그인 됐을 경우 , 로그아웃, 마이페이지 버튼 보여줌 -->
+		<c:if test="${member!=null}">
+			<div class="right_menu">
+					<a href="${rootPath}/member/my_page.do">
+						<img src="/resources/image/toMyPage.png"
+						width="30px" height="30px">
+					</a>
 			</div>
-			<div id="sign_up" class="right_menu">
-				<a href="#" class="top_text2">Sign Up</a>
+			<div id="logout" class="right_menu">
+					<a href="${rootPath}/member/logout.do" class="top_text2">Log Out</a>
 			</div>
+			<!-- 관리자 로그인 -->
+			<c:if test="${member.memberID=='admin'}">
+				<div id="admin_write" class="right_menu">
+					<a href="${rootPath}/write_board.do" class="top_text2">Write</a>
+				</div>
+			</c:if>
+		</c:if>	
 		</nav>
 
 	</div>
@@ -124,35 +140,39 @@ td:nth-child(2n+1){
 
 		<div id="main_right_area">		
 
-			<form action="#" method="get">
+			<form action="${rootPath}/write_board.do" method="post">
 
 			
 				<table>
-	
+
+					<tr>
+						<td> Writer </td>
+						<td><input type="text" name="writer" value="${member.memberID}" readonly></td>
+					</tr>
 					<tr>
 						<td> Title  </td>
-						<td><input type="text"> </td>
+						<td><input type="text" name="title"> </td>
 					</tr>
 					<tr>
 						<td> Starring  </td>
-						<td><input type="text"> </td>
+						<td><input type="text" name="starring"> </td>
 					</tr>
 					<tr>
 						<td> Genre  </td>
-						<td><input type="text"> </td>
+						<td><input type="text" name="genre"> </td>
 					</tr>
 					<tr>
 						<td> Summary  </td>
-						<td><textarea cols="70" rows="10" maxlength="500"></textarea> </td>
+						<td><textarea cols="70" rows="10" maxlength="500" name="summary"></textarea> </td>
 					</tr>
 					<tr>
 						<td> 첨부  </td>
-						<td><input type="file"/> </td>
+						<td><input type="file" name="file"/></td>
 					</tr>
 					
 				</table>
 
-				<div id="submit_btn_area"><input type="submit" id="submit_inner"></div>
+				<div id="submit_btn_area"><input type="submit" id="submit_inner"/></div>
 
 			
 	

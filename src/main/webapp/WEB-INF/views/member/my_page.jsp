@@ -81,12 +81,24 @@
 				</form>			
 			</div>
 		
-			<div id="login" class="right_menu">
-				<a href="member/login.do" class="top_text2">Login</a>
-			</div>
-			<div id="sign_up" class="right_menu">
-				<a href="member/sign_up.do" class="top_text2">Sign Up</a>
-			</div>
+				<!-- 로그인 됐을 경우 , 로그아웃, 마이페이지 버튼 보여줌 -->
+			<c:if test="${member!=null}">
+				<div class="right_menu">
+						<a href="${rootPath}/member/my_page.do">
+							<img src="/resources/image/toMyPage.png"
+							width="30px" height="30px">
+						</a>
+				</div>
+				<div id="logout" class="right_menu">
+						<a href="${rootPath}/member/logout.do" class="top_text2">Log Out</a>
+				</div>
+			<!-- 관리자 로그인 -->
+				<c:if test="${sessionScope.sessionID=='admin'}">
+				<div id="admin_write" class="right_menu">
+						<a href="#" class="top_text2">Write</a>
+					</div>
+				</c:if>
+			</c:if>	
 		</nav>
 
 	</div>
@@ -108,14 +120,14 @@
 
 	<div class="main_inner_area">
 		<div class="content_left_area">NICKNAME</div>
-
+		<p>${member.nickname}</p>
 		<div class="content_right_area"> <input type="text" placeholder="now"> </div>
 	</div>
 
 	<div class="main_inner_area">
 		<div class="content_left_area">ID</div>
-
-		<div class="content_right_area"> current_id </div>
+		
+		<div class="content_right_area">${member.nickname}</div>
 	</div>
 
 	<div class="main_inner_area">
@@ -131,13 +143,13 @@
 	<div class="main_inner_area">
 		<div class="content_left_area">EMAIL</div>
 
-		<div class="content_right_area"> current email </div>
+		<div class="content_right_area"><p>${member.email}</p></div>
 	</div>
 
 	<div class="main_inner_area">
 		<div class="content_left_area">PHONE</div>
 
-		<div class="content_right_area"> current phone </div>
+		<div class="content_right_area"><p>${member.phoneNum}</p></div>
 	</div>
 
 

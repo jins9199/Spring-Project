@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.SessionScope;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +39,7 @@ public class MemberController {
 		log.info("############vo: " + vo);
 		
 		memberService.insertMember(vo);
+		memberService.login(vo);
 		
 		return "redirect:../index.do"; //      ../ = 현재위치의 상위경로
 	}
@@ -62,16 +64,28 @@ public class MemberController {
 		
 		MemberVO login = memberService.login(vo);
 		
+		log.info("loginVO: " + login);
 		if(login == null) {
 			session.setAttribute("member", null);
 		} else
 			session.setAttribute("member", login);
-		return "index";
+		log.info("sessionAttribute's member: " + session.getAttribute("member"));
+		
+		return "redirect:../index.do";
+	}
+	
+	//logout
+	@RequestMapping(value="/logout.do")
+	public String getLogOut(HttpSession session) {
+		session.invalidate();
+		return "redirect:../index.do";
+				
 	}
 	
 	//myPage Get
 	@RequestMapping(value="my_page.do" , method=RequestMethod.GET)
 	public String getMyPage() {
+		
 		return "member/my_page";
 	}
 	

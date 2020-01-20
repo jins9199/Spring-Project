@@ -46,7 +46,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO login(MemberVO vo) {
 		
-		return sqlSession.selectOne("MemberMapper.login");
+		return sqlSession.selectOne("MemberMapper.login", vo);
 	}
 
 }

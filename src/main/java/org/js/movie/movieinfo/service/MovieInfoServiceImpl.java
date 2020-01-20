@@ -27,4 +27,22 @@ public class MovieInfoServiceImpl implements MovieInfoService {
 		return dao.view(id);
 	}
 
+	@Override
+	public void insertMovieInfo(MovieInfoVO vo) {
+		
+		dao.insertMovieInfo(vo);
+	}
+
+	@Override
+	public void deleteMovieInfo(String title) {
+		
+		dao.deleteMovieInfo(title);
+	}
+
+	@Override
+	public void updateMovieInfo(MovieInfoVO vo) {
+		
+		dao.updateMovieInfo(vo);
+	}
+
 }
