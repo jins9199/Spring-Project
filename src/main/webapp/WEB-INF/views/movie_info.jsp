@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -378,9 +379,16 @@
 			<!--점수표시 이미지 끝-->
 	
 			<!-- Positive ?? 보류-->		
-			<div>
-	
-			</div>
+			<c:forEach items="${reviewList}" var="reviewList">
+				<li>
+  					<p>
+					   작성자 : ${reviewList.writer}<br />
+   					   작성 날짜 : ${reviewList.regDate}"
+ 					</p>
+  
+  					<p>${reviewList.content}</p>
+ 				</li>
+ 			</c:forEach>   
 			<!-- Positive ?? 보류-->
 
 			<h2>User Reviews</h2>
@@ -403,6 +411,8 @@
 	</div>
 
 	<!-- 리뷰 점수 끝-->
+	
+	
 
 </div>
 

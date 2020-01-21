@@ -1,12 +1,15 @@
 package org.js.movie.movieinfo.controller;
 
 import java.io.File;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.js.movie.movieinfo.domain.MovieInfoVO;
 import org.js.movie.movieinfo.service.MovieInfoService;
 import org.js.movie.movieinfo.utils.UploadFileUtils;
+import org.js.movie.review.domain.ReviewVO;
+import org.js.movie.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +25,21 @@ public class MovieInfoController {
 	@Autowired
 	MovieInfoService movieInfoService;
 	
+	@Autowired
+	ReviewService reviewService;
+	
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
 	@RequestMapping (value = "/movie_info", method = RequestMethod.GET)
 	public void getMovieInfo(@RequestParam("movieId") int movieId, Model model) throws Exception {
-			
+		
 		MovieInfoVO vo = movieInfoService.view(movieId);
 		
 		model.addAttribute("view", vo);
+		
+		List<ReviewVO> reviewList = reviewService.readReview(movieId);
+		model.addAttribute("reviewList", reviewList);
 	}
 	
 	@RequestMapping (value ="/write_board", method = RequestMethod.GET)
