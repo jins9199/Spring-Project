@@ -1,35 +1,34 @@
 package org.js.movie.movieinfo.controller;
 
+import java.io.File;
+
+import javax.annotation.Resource;
+
 import org.js.movie.movieinfo.domain.MovieInfoVO;
 import org.js.movie.movieinfo.service.MovieInfoService;
+import org.js.movie.movieinfo.utils.UploadFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MovieInfoController {
 
 	
 	@Autowired
-	MovieInfoService service;
+	MovieInfoService movieInfoService;
 	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String getIndex(Model model) {
-//		
-//		List<MovieInfoVO> list = null;
-//		list = service.list();
-//		
-//		model.addAttribute("list", list);
-//
-//		return "index";
-//	}
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@RequestMapping (value = "/movie_info", method = RequestMethod.GET)
-	public void getMovieInfo(@RequestParam("id") int id, Model model) throws Exception {
+	public void getMovieInfo(@RequestParam("movieId") int movieId, Model model) throws Exception {
 			
-		MovieInfoVO vo = service.view(id);
+		MovieInfoVO vo = movieInfoService.view(movieId);
 		
 		model.addAttribute("view", vo);
 	}
@@ -39,11 +38,23 @@ public class MovieInfoController {
 	}
 	
 	@RequestMapping(value = "/write_board", method = RequestMethod.POST)
-	public String posttWrite(MovieInfoVO vo) throws Exception{
-		service.write(vo);
+	public String posttWrite(MovieInfoVO vo, MultipartFile file) throws Exception{
 		
+		String imgUploadPath = uploadPath + File.separator + "movieImage";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if(file != null) {
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+			fileName = uploadPath + File.separator + "image" + File.separator + "none.png";
+		}
+
+		vo.setPoster(File.separator + "movieImage" + ymdPath + File.separator + fileName);
+	
+		movieInfoService.write(vo);
+			
 		return "redirect:/";
 	}
-	
 	
 }

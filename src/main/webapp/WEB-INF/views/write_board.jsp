@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/resources/jquery/jquery-3.4.1.min.js"></script>
 <style>
 
 #site_layout{
@@ -160,6 +161,10 @@ td:nth-child(2n+1){
 	color:#000;
 	border: 1px solid black;
 }
+
+/* 20200117 write_board.jsp movieImg 업로드 위해 추가함 - ohjin */
+.select_img img { margin:20px 0; }
+
 </style>
 
 <script>
@@ -233,7 +238,7 @@ td:nth-child(2n+1){
 		<div id="main_right_area" style="display:flex; justify-content:center;
 	align-items:center;">		
 
-			<form method="post">
+			<form method="post" enctype="multipart/form-data">
 
 			
 				<table>
@@ -255,8 +260,26 @@ td:nth-child(2n+1){
 						<td><textarea cols="70" rows="10" maxlength="500" name="summary"></textarea> </td>
 					</tr>
 					<tr>
-						<td> 첨부  </td>
-						<td><input type="file"/> </td>
+						<td>
+						<div style="margin: 10px 0;">
+ 							<label for="poster">이미지</label>
+ 							<input type="file" id="poster" name="file" />
+ 							<div class="select_img"><img src="" /></div> 
+							<script>
+  								$("#poster").change(function(){
+   									if(this.files && this.files[0]) {
+    									var reader = new FileReader;
+    									reader.onload = function(data) {
+     										$(".select_img img").attr("src", data.target.result).width(200);        
+    									}
+								    	reader.readAsDataURL(this.files[0]);
+   									}
+  								});
+ 							</script>
+ 							
+ 							<%=request.getRealPath("/") %>
+						</div>	
+						</td>
 					</tr>
 					
 				</table>

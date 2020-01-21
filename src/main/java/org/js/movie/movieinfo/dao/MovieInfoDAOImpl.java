@@ -23,9 +23,9 @@ public class MovieInfoDAOImpl implements MovieInfoDAO {
 	
 	//movie info
 	@Override
-	public MovieInfoVO view(int id) {
+	public MovieInfoVO view(int movieId) {
 		
-		return sql.selectOne("MovieInfoMapper.view", id);
+		return sql.selectOne("MovieInfoMapper.view", movieId);
 	}
 
 	//movie write

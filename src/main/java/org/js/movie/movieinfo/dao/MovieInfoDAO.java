@@ -10,7 +10,7 @@ public interface MovieInfoDAO {
 	public List<MovieInfoVO> list();
 	
 //	movie info
-	public MovieInfoVO view(int id);
+	public MovieInfoVO view(int movieId);
 	
 //	movie write
 	public void write(MovieInfoVO vo);

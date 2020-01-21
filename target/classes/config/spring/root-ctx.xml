@@ -13,6 +13,11 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-		<import resource="db-ctx.xml"/>
+
+		
+		
+	<import resource="db-ctx.xml"/>
+	
+	
 		
 </beans>
