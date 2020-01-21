@@ -49,8 +49,7 @@ section[id^=board]{
 
 </head>
 <body>
-<!-- 절대 경로 -->
-<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
+
 <div id="site_layout">
 
 	<!--movieCri-->
@@ -66,7 +65,7 @@ section[id^=board]{
 		<a href=".do"><img src="/resources/image/logo.webp" alt="OpenCritic"></a>
 		</li>
 		<li class="left_menu">
-			<a href="movie_list.do" class="top_text1">Genre</a>
+			<a href="#" class="top_text1">Genre</a>
 				
 				<ul id="genre_sub">			<!-- select 기준 적용된 페이지 호출.. -->
 					<li class="left_inner_menu"><a href="#" class="top_text3">Action</a></li>
@@ -91,48 +90,34 @@ section[id^=board]{
 				</form>			
 			</div>
 		
-
-	
-
-
-
-
-
-	
-	
-
-
-		
-		
-		
-				<!-- 로그인 안됐을 경우 , 로그인, 회원가입 버튼 보여줌-->
-		<c:if test="${member==null}">		
-			<div id="login" class="right_menu">
-				<a href="${rootPath}/member/login.do" class="top_text2">Login</a>
-			</div>
-			<div id="sign_up" class="right_menu">
-				<a href="${rootPath}/member/sign_up.do" class="top_text2">Sign Up</a>
-			</div>
-		</c:if>
-		
-		<!-- 로그인 됐을 경우 , 로그아웃, 마이페이지 버튼 보여줌 -->
-		<c:if test="${member!=null}">
-			<div class="right_menu">
-					<a href="${rootPath}/member/my_page.do">
-						<img src="/resources/image/toMyPage.png"
-						width="30px" height="30px">
-					</a>
-			</div>
-			<div id="logout" class="right_menu">
-					<a href="${rootPath}/member/logout.do" class="top_text2">Log Out</a>
-			</div>
-		<!-- 관리자 로그인 -->
-			<c:if test="${member.memberID=='admin'}">
-				<div id="admin_write" class="right_menu">
-					<a href="${rootPath}/write_board.do" class="top_text2">Write</a>
+						<!-- 로그인 안됐을 경우 , 로그인, 회원가입 버튼 보여줌-->
+			<c:if test="${member==null}">		
+				<div id="login" class="right_menu">
+					<a href="${rootPath}/member/login.do" class="top_text2">Login</a>
+				</div>
+				<div id="sign_up" class="right_menu">
+					<a href="${rootPath}/member/sign_up.do" class="top_text2">Sign Up</a>
 				</div>
 			</c:if>
-		</c:if>	
+		
+			<!-- 로그인 됐을 경우 , 로그아웃, 마이페이지 버튼 보여줌 -->
+			<c:if test="${member!=null}">
+				<div class="right_menu">
+						<a href="${rootPath}/member/my_page.do">
+							<img src="/resources/image/toMyPage.png"
+							width="30px" height="30px">
+						</a>
+				</div>
+				<div id="logout" class="right_menu">
+						<a href="${rootPath}/member/logout.do" class="top_text2">Log Out</a>
+				</div>
+			<!-- 관리자 로그인 -->
+				<c:if test="${member.memberID=='admin'}">
+					<div id="admin_write" class="right_menu">
+						<a href="${rootPath}/write_board.do" class="top_text2">Write</a>
+					</div>
+				</c:if>
+			</c:if>	
 		</nav>
 
 	</div>
@@ -141,29 +126,13 @@ section[id^=board]{
 
 	<!-- 영화 포스터-->		
 	<div id="posters">
-
-		<div id="movie1">
-			<a href="#">
-				<img src="/resources/image/movie1.webp" alt="movie1">
-			</a>		
-		</div>
-		<div id="movie2">
-			<a href="#">
-				<img src="/resources/image/movie2.webp" alt="movie2">
-			</a>		
-		</div>
-		<div id="movie3">
-			<a href="#">
-				<img src="/resources/image/inner_poster.jpg" alt="movie3">
-			</a>		
-
-		</div>
-		<div id="movie4">
-			<a href="#">
-				<img src="/resources/image/movie4.webp" alt="movie4">
-			</a>	
-		</div>
-
+		<c:forEach items="${list}" var="list">
+			<div id="movie1">
+				<a href="/movie_info?id=${list.id}">
+					<img src="${list.poster}" alt="movie">
+				</a>		
+			</div>	
+		</c:forEach>
 	</div>
 	<!-- 영화 포스터 끝-->
 

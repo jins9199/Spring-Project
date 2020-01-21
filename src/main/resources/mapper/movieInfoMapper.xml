@@ -21,9 +21,8 @@
 
 	<!-- index movie 목록 -->
 	<select id="list" resultType="movieInfoVO">
- 		select
- 			id, title, regDate
- 		from tbl_movieinfo
+		SELECT *
+ 		FROM TBL_MOVIEINFO
 	</select>
 		
 	<select id="view" parameterType="int" resultType="movieInfoVO">

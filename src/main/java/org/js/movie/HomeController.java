@@ -2,6 +2,8 @@ package org.js.movie;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.js.movie.movieinfo.domain.MovieInfoVO;
 import org.js.movie.movieinfo.service.MovieInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,11 @@ public class HomeController {
 	MovieInfoService service;
 	
 	@RequestMapping(value = {"/", "index.do"} , method = RequestMethod.GET)
-	public String getIndex(Model model) {
+	public String getIndex(Model model, HttpServletRequest request) {
 		
 		log.info("HomeController 진입");
+		String nowPath = request.getSession().getServletContext().getRealPath("resources");
+		log.info("vo : " + nowPath);
 		
 		List<MovieInfoVO> list = null;
 		list = service.list();
@@ -30,8 +34,11 @@ public class HomeController {
 		log.info("list : " +list);
 		
 		model.addAttribute("list", list);
-
+		model.addAttribute("path", nowPath);		
 		return "index";
 	}
 }
+
+
+
 //

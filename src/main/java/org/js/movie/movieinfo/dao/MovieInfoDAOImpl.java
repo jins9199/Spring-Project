@@ -15,7 +15,6 @@ public class MovieInfoDAOImpl implements MovieInfoDAO {
 	private SqlSessionTemplate sql;
 	
 	
-	@Override
 	public List<MovieInfoVO> list() {
 
 		return sql.selectList("MovieInfoMapper.list");

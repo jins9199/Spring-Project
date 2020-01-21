@@ -101,7 +101,7 @@ td:nth-child(2n+1){
 			
 			<div id="form" class="right_menu">
 	
-				<form action="#" method="post" class="right_menu">
+				<formaction="#" method="post" class="right_menu">
 
 					<input type="text" placeholder="Search" class="top_text2" id="search">
 
@@ -140,7 +140,7 @@ td:nth-child(2n+1){
 
 		<div id="main_right_area">		
 
-			<form action="${rootPath}/write_board.do" method="post">
+			<form enctype="multipart/form-data" action="${rootPath}/write_board.do" method="post">
 
 			
 				<table>
@@ -167,7 +167,7 @@ td:nth-child(2n+1){
 					</tr>
 					<tr>
 						<td> 첨부  </td>
-						<td><input type="file" name="file"/></td>
+						<td><input multiple="multiple" type="file" name="file"/></td>
 					</tr>
 					
 				</table>

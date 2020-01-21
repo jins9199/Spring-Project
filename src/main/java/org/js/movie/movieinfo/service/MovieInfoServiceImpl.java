@@ -14,10 +14,9 @@ public class MovieInfoServiceImpl implements MovieInfoService {
 	@Inject
 	private MovieInfoDAO dao;
 	
-	
 	@Override
 	public List<MovieInfoVO> list() {
-
+		
 		return dao.list();
 	}
 	
