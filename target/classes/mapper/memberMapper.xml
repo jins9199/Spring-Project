@@ -9,8 +9,8 @@
 	
 	<insert id="insertMember" parameterType="memberVO">
 	
-		INSERT INTO TBL_MEMBER(NICKNAME, MEMBERID, MEMBERPW, EMAIL, PHONENUM)
-		VALUES (#{nickname}, #{memberID}, #{memberPW}, #{email}, #{phoneNum})
+		INSERT INTO TBL_MEMBER(NICKNAME, member_id, MEMBERPW, EMAIL, PHONENUM)
+		VALUES (#{nickname}, #{memberId}, #{memberPW}, #{email}, #{phoneNum})
 	
 	</insert>
 
@@ -21,19 +21,19 @@
 	
 	<delete id="deleteMember" parameterType="String">
 		DELETE FROM TBL_MEMBER
-		WHERE MEMBERID = #{memberID}
+		WHERE member_id = #{memberId}
 	</delete>
 
 
 	<select id="selectAllMember" resultType="memberVO">
 		SELECT * FROM TBL_MEMBER
-		ORDER BY MEMBERID
+		ORDER BY member_id
 	</select>
 	
 	<select id="selectOneMember" resultType="memberVO">
 		SELECT * FROM TBL_MEMBER
-		WHERE MEMBERID=#{memberID}
-		ORDER BY MEMBERID
+		WHERE member_id=#{memberId}
+		ORDER BY member_id
 	</select>
 
 </mapper>

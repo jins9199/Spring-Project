@@ -6,7 +6,7 @@
 	<select id="poster_list" resultType="movieinfoVO">
 		select
 			movieId, regDate
-		from tbl_movieinfo
+		from tbl_movie_info
 		order by regDate desc
 		limit 4
 	</select>
@@ -15,7 +15,7 @@
 	<select id="list" resultType="movieinfoVO">
  		select
  			movieId, title, regDate
- 		from tbl_movieinfo
+ 		from tbl_movie_info
  		order by movieId desc
  		limit 7
 	</select>
@@ -25,7 +25,7 @@
 		select
 			movieId, title, summary, regDate
 		from
-			tbl_movieinfo
+			tbl_movie_info
 		where
 			movieId = #{movieId}
 	
@@ -34,7 +34,7 @@
 	<!--  movie info 작성 -->
 	<insert id="write" parameterType="movieinfoVO">
 		insert into
-			tbl_movieinfo(title, summary, poster)
+			tbl_movie_info(title, summary, poster)
 				values(#{title}, #{summary}, #{poster})
 	</insert>
 	
