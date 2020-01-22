@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <style>
 
-#posters{
+#posters{ 
 	display:flex;
 	justify-content:center;
 	align-items:center;          
