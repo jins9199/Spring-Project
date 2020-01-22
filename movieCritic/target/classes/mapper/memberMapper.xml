@@ -6,15 +6,15 @@
 	
 	<select id="login" resultType="memberVO" parameterType="String">
 		SELECT NICKNAME, MEMBERID, EMAIL, PHONENUM  FROM TBL_MEMBER
-		WHERE MEMBERID = #{memberID} 
+		WHERE MEMBER_ID = #{memberId} 
 		AND MEMBERPW = #{memberPW}
 	</select>
 	
 	
 	<insert id="insertMember" parameterType="memberVO">
 	
-		INSERT INTO TBL_MEMBER(NICKNAME, MEMBERID, MEMBERPW, EMAIL, PHONENUM)
-		VALUES (#{nickname}, #{memberID}, #{memberPW}, #{email}, #{phoneNum})
+		INSERT INTO TBL_MEMBER(NICKNAME, MEMBER_ID, MEMBERPW, EMAIL, PHONENUM)
+		VALUES (#{nickname}, #{memberId}, #{memberPW}, #{email}, #{phoneNum})
 	
 	</insert>
 
