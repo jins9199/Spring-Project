@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.authMemberMapper">
+
+	<select id="getMemberByMemberID"
+            resultType="memberVO"
+            parameterType="String">
+        SELECT * FROM TBL_MEMBER
+        WHERE MEMBERID = #{memberID}
+    </select>
+   
+	<select id="getMemberRolesByMemberID"
+            resultType="memberVO"
+            parameterType="String">
+        SELECT * FROM TBL_MEMBER_ROLES
+        WHERE MEMBERID = #{memberID}
+    </select>
+   
+    <select id="hasUsername"
+            resultType="int"
+            parameterType="String">
+        SELECT count(*) FROM TBL_MEMBER
+        WHERE MEMBERID = #{memberID}
+    </select>
+   
+    <insert id="insertUser" parameterType="memberVO">
+        INSERT INTO TBL_MEMBER VALUES
+        (#{memberVO.memberID}, #{memberVO.memberPW}, #{memberVO.enabled})           
+    </insert>
+   
+    <insert id="insertMemberRoles">
+        INSERT INTO TBL_MEMBER_ROLES VALUES
+        (#{memberID}, #{role})      
+    </insert>  
+
+
+</mapper>

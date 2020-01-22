@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+	
+	<select id="login" resultType="memberVO" parameterType="String">
+		SELECT NICKNAME, MEMBERID, EMAIL, PHONENUM  FROM TBL_MEMBER
+		WHERE MEMBERID = #{memberID} 
+		AND MEMBERPW = #{memberPW}
+	</select>
+	
+	
+	<insert id="insertMember" parameterType="memberVO">
+	
+		INSERT INTO TBL_MEMBER(NICKNAME, MEMBERID, MEMBERPW, EMAIL, PHONENUM)
+		VALUES (#{nickname}, #{memberID}, #{memberPW}, #{email}, #{phoneNum})
+	
+	</insert>
+
+	<update id="updateMember">
+		UPDATE TBL_MEMBER SET MEMBERPW=#{memberPW}, EMAIL=#{email}, PHONENUM=#{phoneNum}
+	
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM TBL_MEMBER
+		WHERE MEMBERID = #{memberID}
+	</delete>
+
+
+	<select id="selectAllMember" resultType="memberVO">
+		SELECT * FROM TBL_MEMBER
+		ORDER BY MEMBERID
+	</select>
+	
+	<select id="selectOneMember" resultType="memberVO">
+		SELECT * FROM TBL_MEMBER
+		WHERE MEMBERID=#{memberID}
+		ORDER BY MEMBERID
+	</select>
+
+</mapper>
