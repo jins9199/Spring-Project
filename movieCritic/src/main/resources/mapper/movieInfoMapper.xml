@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MovieInfoMapper">
+
+<!-- title, starring, genre, summary, 첨부. -->
+	<insert id="insert" parameterType="movieInfoVO">
+		INSERT INTO TBL_MOVIEINFO (TITLE, STARRING, GENRE, WRITER, REGISTERDATE, SUMMARY, STILLCUT1, STILLCUT2, STILLCUT3
+		, THUMBNAIL, POSTER)
+		VALUES (#{title}, #{starring}, #{genre}, #{writer}, #{registerDate} #{summary}, #{stillCut1},  #{stillCut2}, #{stillCut3}
+		, #{thumbNail}, #{poster})
+	</insert>
+
+	<update id="update" parameterType="movieInfoVO">
+		UPDATE TBL_MOVIEINFO SET TITLE=#{title}, STARRING=#{starring}, GENRE=#{genre}, SUMARRY=#{summary},
+					POSTER=#{poster}, THUMBNAIL=#{thumbNail}, STILLCUT1=#{stillCut1}, STILLCUT2=#{stillCut2}, STILLCUT3=#{stillCut3}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM TBL_MOVIEINFO
+		WHERE TITLE = #{title}
+	</delete>
+
+
+	<!-- index movie 목록 -->
+	<select id="list" resultType="movieInfoVO">
+		SELECT *
+ 		FROM TBL_MOVIEINFO
+	</select>
+		
+	<select id="view" parameterType="int" resultType="movieInfoVO">
+		select
+			movieId, title, summary, registerDate
+		from
+			tbl_movieinfo
+		where
+			movieId = #{movieId}
+	
+	</select>
+	
+</mapper>
