@@ -12,7 +12,7 @@
 #posters{
 	display:flex;
 	justify-content:center;
-	align-items:center;
+	align-items:center;          
 }
 
 div[id^=movie]{
